@@ -107,50 +107,95 @@ def longestSubSequence(tehSequence):
     longestSequence = []
     tempSequence = []
 
-    lowestNumber = 0
+    lowestNumber = max(tehSequence)
+
+    
 
     for everyNumber in range(len(tehSequence)):
 
-        print("everyNumber is:", everyNumber)
-
-        tempSequence = []
         tempSequence.append(tehSequence[everyNumber])
 
-        lowestNumber = tehSequence[everyNumber]
+        tempItem = tempSequence.pop()
+        tempSequence.append(tempItem)
 
-        for eachNumber in range(everyNumber, len(tehSequence)):
-
-            if tehSequence[eachNumber] < lowestNumber:
-                lowestNumber = tehSequence[eachNumber]
-
-        print("This is tempSequence", tempSequence)
+        print("tempSequence", tempSequence)
 
         for everySubNumber in range(everyNumber, len(tehSequence)):
 
-            print("everySubNumber is:", everySubNumber)
-            print("tehSequence everySubNumber", tehSequence[everySubNumber])
+            if tehSequence[everySubNumber] < lowestNumber and tehSequence[everySubNumber] > tempItem:
+                    lowestNumber = tehSequence[everySubNumber]
 
-            tempItem = tempSequence.pop()
-            tempSequence.append(tempItem)
+        tempSequence.append(lowestNumber)
+        print("lowest Number", lowestNumber)
 
-            if tempItem < tehSequence[everySubNumber]:
-                tempSequence.append(tehSequence[everySubNumber])
+        lowestNumber = max(tehSequence)
 
-        # tempSequence.append(tehSequence[everyNumber])
 
-        print("temp Sequence", tempSequence)
-        print("longest sequence is", longestSequence)
 
-        if len(tempSequence) > len(longestSequence):
 
-            # print("temp Sequence", tempSequence)
-            # print("longest sequence is", longestSequence)
 
-            longestSequence = tempSequence
 
-        print("")
+        tempSequence.pop()
 
-    return longestSequence
+
+
+
+    return lowestNumber
+
+
+    # lowestNumber = 0
+    #
+    # for everyNumber in range(len(tehSequence)):
+    #
+    #     print("everyNumber is:", everyNumber)
+    #
+    #     tempSequence = []
+    #     tempSequence.append(tehSequence[everyNumber])
+    #
+    #     lowestNumber = tehSequence[everyNumber]
+    #
+    #     for eachNumber in range(everyNumber, len(tehSequence)):
+    #
+    #         if tehSequence[eachNumber] < lowestNumber:
+    #             lowestNumber = tehSequence[eachNumber]
+    #
+    #     print("This is tempSequence", tempSequence)
+    #
+    #     for everySubNumber in range(everyNumber, len(tehSequence)):
+    #
+    #         print("everySubNumber is:", everySubNumber)
+    #         print("tehSequence everySubNumber", tehSequence[everySubNumber])
+    #
+    #         tempItem = tempSequence.pop()
+    #         tempSequence.append(tempItem)
+    #
+    #         if tempItem < tehSequence[everySubNumber]:
+    #             tempSequence.append(tehSequence[everySubNumber])
+    #
+    #     # tempSequence.append(tehSequence[everyNumber])
+    #
+    #     print("temp Sequence", tempSequence)
+    #     print("longest sequence is", longestSequence)
+    #
+    #     if len(tempSequence) > len(longestSequence):
+    #
+    #         # print("temp Sequence", tempSequence)
+    #         # print("longest sequence is", longestSequence)
+    #
+    #         longestSequence = tempSequence
+    #
+    #     print("")
+    #
+    # return longestSequence
+
+"""
+
+Take the first node,
+Look at all other nodes in the sequence, and calculate which one is the lowest of the bunch, but higher than the initial
+add it to the list.
+Repeat step 2.
+
+"""
 
 # loot item for knapsack
 Item = namedtuple('Item', ['weight', 'value'])
