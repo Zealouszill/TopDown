@@ -109,25 +109,26 @@ def longestSubSequence(tehSequence):
 
     lowestNumber = max(tehSequence)
 
-    
+    i = 0
+    sequenceNodePosition = 0
 
-    for everyNumber in range(len(tehSequence)):
+    while i <= len(tehSequence):
 
-        tempSequence.append(tehSequence[everyNumber])
+        tempSequence.append(tehSequence[sequenceNodePosition])
 
         tempItem = tempSequence.pop()
         tempSequence.append(tempItem)
 
         print("tempSequence", tempSequence)
 
-        for everySubNumber in range(everyNumber, len(tehSequence)):
+        for everySubNumber in range(tehSequence[sequenceNodePosition], len(tehSequence)):
 
             if tehSequence[everySubNumber] < lowestNumber and tehSequence[everySubNumber] > tempItem:
-                    lowestNumber = tehSequence[everySubNumber]
+                lowestNumber = tehSequence[everySubNumber]
+                sequenceNodePosition =
+                print("lowest Number", lowestNumber)
 
         tempSequence.append(lowestNumber)
-        print("lowest Number", lowestNumber)
-
         lowestNumber = max(tehSequence)
 
 
@@ -135,7 +136,12 @@ def longestSubSequence(tehSequence):
 
 
 
+
+
+
         tempSequence.pop()
+
+        i += 1
 
 
 
